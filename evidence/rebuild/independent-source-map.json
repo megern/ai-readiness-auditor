@@ -1,0 +1,142 @@
+[
+  {
+    "sha256": "26ea89ace3fb57ab8f4850c08ab4249a24921f860fd4a224ed9a44c9b4fdf045",
+    "path": ".dockerignore"
+  },
+  {
+    "sha256": "75bacad530e954e23dda58dd1ef74e31ba2674fd70930dd200edc3e207f8d378",
+    "path": ".github/workflows/ci.yml"
+  },
+  {
+    "sha256": "695874136675be1402d6ee3696680669e0a8bc74c0fd305cba7675be1b0f27f5",
+    "path": ".gitignore"
+  },
+  {
+    "sha256": "cc61fc147a0795314f5878354f90b353b71f6c1cdbba30f0a3e261a00f2bbfef",
+    "path": ".gitleaks.toml"
+  },
+  {
+    "sha256": "11e7bdd058b64cd74b6fe90a9687e6a9e4a5644139e2c5bdc4d27e7e1051b944",
+    "path": "Dockerfile"
+  },
+  {
+    "sha256": "731e1cfa5bf38bcc3036f387dcb40d8fc21e5c63ffd53cc92c2f55e02df5876e",
+    "path": "LICENSE"
+  },
+  {
+    "sha256": "94fada742171d1959b31f6e9a6a6cbfa7e7607b14c456d8bf818c3f9d19ac8ea",
+    "path": "README.md"
+  },
+  {
+    "sha256": "efc4c56daaa1557f683b85915bf8e1986032e43db42c66a0f96b7e93dfaadf35",
+    "path": "SECURITY.md"
+  },
+  {
+    "sha256": "c1c2a0442578930e45bf9513a6572a8de3bd283c2a7005cec9c47e17b5de0025",
+    "path": "app/USER_GUIDE.md"
+  },
+  {
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "path": "app/__init__.py"
+  },
+  {
+    "sha256": "2e4650605e881bc4554a4c7f435fe5c5dce3f8d0358f12c191510095e8759f0c",
+    "path": "app/core.py"
+  },
+  {
+    "sha256": "d1eda2150e58503114c6cf4ba36d5958aa7e2cfbb496fc0d8026b5c9da4beb77",
+    "path": "app/guard.py"
+  },
+  {
+    "sha256": "425abd5bd8ccbf6ba64f0f92558a373920effb7ae6cf7dd78a93aff7d01653e4",
+    "path": "app/main.py"
+  },
+  {
+    "sha256": "8918603a09b41f23efdaf0c02d6e52fd5b2c44afae61cc02c37fe6d88d1938b5",
+    "path": "app/static/app.js"
+  },
+  {
+    "sha256": "b202330f33acfbe596a59410e26136c99c3e494f34343cb954ba9430dba16eb4",
+    "path": "app/static/common.js"
+  },
+  {
+    "sha256": "b987e0db3d1f1bf60519e686079b3b2ef9f7e0681abc033e2f65376e92ad74c6",
+    "path": "app/static/guide.html"
+  },
+  {
+    "sha256": "c154bc01b16c7064b77ce5f8ebca0de37d026e71b38a317518b782474a67ffd2",
+    "path": "app/static/index.html"
+  },
+  {
+    "sha256": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+    "path": "app/static/styles.css"
+  },
+  {
+    "sha256": "908db17023fde21d48829b52e9540899cfda4e230c935a744cda2899f400e0a4",
+    "path": "compose.yaml"
+  },
+  {
+    "sha256": "c1c2a0442578930e45bf9513a6572a8de3bd283c2a7005cec9c47e17b5de0025",
+    "path": "docs/USER_GUIDE.md"
+  },
+  {
+    "sha256": "3f7ed873b5166bf3a941b44bffd8c3b94f965364d1bdbb702fc3607eccb6adee",
+    "path": "examples/synthetic.json"
+  },
+  {
+    "sha256": "baf70839895b82e395bfd19c13ac5ac167aa45217fb2e4469c823e65e9073a48",
+    "path": "package.json"
+  },
+  {
+    "sha256": "c2e6881b827248a9d52ba169e76319a6624d6f01b7f5abf2b989abc65a55687f",
+    "path": "pyproject.toml"
+  },
+  {
+    "sha256": "3e9fb16204447836fb946dd77126b42b5c249acbee4a1dd44779ba21ab2af810",
+    "path": "requirements-dev.in"
+  },
+  {
+    "sha256": "4e030cebd3834809ad8e01e16633198a5d1b9c89f2ce583241751a8327285f55",
+    "path": "requirements-dev.lock"
+  },
+  {
+    "sha256": "cc2d915f3530f2b16ab605d633b94e6c8784ee70f799daf639dd30deef2361de",
+    "path": "requirements-dev.txt"
+  },
+  {
+    "sha256": "da44951925ae485ff2ba743af929b11e7b0bac5b631084de18e1324b723d6f4d",
+    "path": "requirements.lock"
+  },
+  {
+    "sha256": "bd62df965af87f46d7903a4c86d2e43d7622bbcb6145a04466e29dc6c0e0c22b",
+    "path": "requirements.txt"
+  },
+  {
+    "sha256": "7c61e2c27c292fc5121bac1b7fa544a6278ec58c8094535fe2e3cf30b40a10b1",
+    "path": "tests/test_app.py"
+  },
+  {
+    "sha256": "29acf3115d6a6576e4623231658668254c3633666ef3660b206cf2f5587d7780",
+    "path": "tests/test_input_limits.py"
+  },
+  {
+    "sha256": "64bc9b9e537804f1dcdc6fa3eb9c96521577906ef5b187111b52891555e325f3",
+    "path": "tests/test_rebuild.py"
+  },
+  {
+    "sha256": "09dfafd553586be91857fd7a834107a42a47d6eef0cfdf7111be83758dbfb10c",
+    "path": "tests/test_review.py"
+  },
+  {
+    "sha256": "ab21bb48a2c2992cfeccfa0628779609ff62b1ad90887d76a2b720ce17bae1c1",
+    "path": "tests/ui.test.mjs"
+  },
+  {
+    "sha256": "94ca23ae81eaef6f0a3eddcb5dbae0970c22bfe14e91c625d5d10a83edcd5b9f",
+    "path": "tools/scan_secrets.py"
+  },
+  {
+    "sha256": "ecedd0d5c9208a193cea960d43f084b49acd0a0dcd20e709cb2c755675769fd3",
+    "path": "tools/smoke.py"
+  }
+]
