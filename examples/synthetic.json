@@ -1,0 +1,34 @@
+{
+  "dimensions": {
+    "strategy": {
+      "score": 4,
+      "evidence": [
+        "Synthetic documented control"
+      ]
+    },
+    "data": {
+      "score": 3,
+      "evidence": [
+        "Synthetic documented control"
+      ]
+    },
+    "governance": {
+      "score": 2,
+      "evidence": [
+        "Synthetic documented control"
+      ]
+    },
+    "people": {
+      "score": 4,
+      "evidence": [
+        "Synthetic documented control"
+      ]
+    },
+    "infrastructure": {
+      "score": 3,
+      "evidence": [
+        "Synthetic documented control"
+      ]
+    }
+  }
+}
