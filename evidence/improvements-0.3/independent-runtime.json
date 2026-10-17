@@ -1,0 +1,278 @@
+{
+  "application": "ai-readiness-auditor",
+  "port": 18202,
+  "reviewer": "independent build_security_rag_arena_data",
+  "version": "0.3.0",
+  "kind": "Actual loopback HTTP requests to Docker preview provided by orchestrator",
+  "checks": [
+    {
+      "name": "health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "weighted comparison evidence cap",
+      "path": "/compare",
+      "status": 200,
+      "passed": true,
+      "response": {
+        "score_out_of_100": 73.0,
+        "band": "developing",
+        "dimensions": [
+          {
+            "dimension": "strategy",
+            "weight": 0.2,
+            "reported_score": 4.0,
+            "evidence_present": true,
+            "effective_score": 4.0,
+            "contribution": 16.0,
+            "priority": 0.2,
+            "action": "Define measurable use cases and accountable owners."
+          },
+          {
+            "dimension": "data",
+            "weight": 0.25,
+            "reported_score": 5.0,
+            "evidence_present": true,
+            "effective_score": 5.0,
+            "contribution": 25.0,
+            "priority": 0.0,
+            "action": "Inventory data and establish quality and access controls."
+          },
+          {
+            "dimension": "governance",
+            "weight": 0.2,
+            "reported_score": 5.0,
+            "evidence_present": false,
+            "effective_score": 1.0,
+            "contribution": 4.0,
+            "priority": 0.8,
+            "action": "Document risk review, privacy controls and model approval."
+          },
+          {
+            "dimension": "people",
+            "weight": 0.15,
+            "reported_score": 4.0,
+            "evidence_present": true,
+            "effective_score": 4.0,
+            "contribution": 12.0,
+            "priority": 0.15,
+            "action": "Assign delivery roles and train practitioners."
+          },
+          {
+            "dimension": "infrastructure",
+            "weight": 0.2,
+            "reported_score": 4.0,
+            "evidence_present": true,
+            "effective_score": 4.0,
+            "contribution": 16.0,
+            "priority": 0.2,
+            "action": "Establish reproducible deployment and monitoring."
+          }
+        ],
+        "prioritized_actions": [
+          {
+            "dimension": "governance",
+            "weight": 0.2,
+            "reported_score": 5.0,
+            "evidence_present": false,
+            "effective_score": 1.0,
+            "contribution": 4.0,
+            "priority": 0.8,
+            "action": "Document risk review, privacy controls and model approval."
+          },
+          {
+            "dimension": "infrastructure",
+            "weight": 0.2,
+            "reported_score": 4.0,
+            "evidence_present": true,
+            "effective_score": 4.0,
+            "contribution": 16.0,
+            "priority": 0.2,
+            "action": "Establish reproducible deployment and monitoring."
+          },
+          {
+            "dimension": "strategy",
+            "weight": 0.2,
+            "reported_score": 4.0,
+            "evidence_present": true,
+            "effective_score": 4.0,
+            "contribution": 16.0,
+            "priority": 0.2,
+            "action": "Define measurable use cases and accountable owners."
+          },
+          {
+            "dimension": "people",
+            "weight": 0.15,
+            "reported_score": 4.0,
+            "evidence_present": true,
+            "effective_score": 4.0,
+            "contribution": 12.0,
+            "priority": 0.15,
+            "action": "Assign delivery roles and train practitioners."
+          }
+        ],
+        "method": "Weighted score / 5; missing evidence caps dimension at 1. Evidence presence is not independently verified.",
+        "comparison": {
+          "baseline_score": 80.0,
+          "current_score": 73.0,
+          "total_delta": -7.0,
+          "dimensions": [
+            {
+              "dimension": "strategy",
+              "weight": 0.2,
+              "baseline_reported_score": 4.0,
+              "current_reported_score": 4.0,
+              "baseline_effective_score": 4.0,
+              "current_effective_score": 4.0,
+              "baseline_contribution": 16.0,
+              "current_contribution": 16.0,
+              "weighted_score_delta": 0.0,
+              "baseline_evidence_present": true,
+              "current_evidence_present": true,
+              "evidence_added": [],
+              "evidence_removed": []
+            },
+            {
+              "dimension": "data",
+              "weight": 0.25,
+              "baseline_reported_score": 4.0,
+              "current_reported_score": 5.0,
+              "baseline_effective_score": 4.0,
+              "current_effective_score": 5.0,
+              "baseline_contribution": 20.0,
+              "current_contribution": 25.0,
+              "weighted_score_delta": 5.0,
+              "baseline_evidence_present": true,
+              "current_evidence_present": true,
+              "evidence_added": [
+                "new"
+              ],
+              "evidence_removed": [
+                "old"
+              ]
+            },
+            {
+              "dimension": "governance",
+              "weight": 0.2,
+              "baseline_reported_score": 4.0,
+              "current_reported_score": 5.0,
+              "baseline_effective_score": 4.0,
+              "current_effective_score": 1.0,
+              "baseline_contribution": 16.0,
+              "current_contribution": 4.0,
+              "weighted_score_delta": -12.0,
+              "baseline_evidence_present": true,
+              "current_evidence_present": false,
+              "evidence_added": [],
+              "evidence_removed": [
+                "old"
+              ]
+            },
+            {
+              "dimension": "people",
+              "weight": 0.15,
+              "baseline_reported_score": 4.0,
+              "current_reported_score": 4.0,
+              "baseline_effective_score": 4.0,
+              "current_effective_score": 4.0,
+              "baseline_contribution": 12.0,
+              "current_contribution": 12.0,
+              "weighted_score_delta": 0.0,
+              "baseline_evidence_present": true,
+              "current_evidence_present": true,
+              "evidence_added": [],
+              "evidence_removed": []
+            },
+            {
+              "dimension": "infrastructure",
+              "weight": 0.2,
+              "baseline_reported_score": 4.0,
+              "current_reported_score": 4.0,
+              "baseline_effective_score": 4.0,
+              "current_effective_score": 4.0,
+              "baseline_contribution": 16.0,
+              "current_contribution": 16.0,
+              "weighted_score_delta": 0.0,
+              "baseline_evidence_present": true,
+              "current_evidence_present": true,
+              "evidence_added": [],
+              "evidence_removed": []
+            }
+          ],
+          "method": "Both assessments are recomputed against the same fixed rubric. Evidence descriptions are trimmed and compared as sets; additions do not verify controls or establish certification."
+        }
+      }
+    },
+    {
+      "name": "reject fabricated totals instead of original input",
+      "path": "/compare",
+      "status": 422,
+      "passed": true,
+      "response": {
+        "detail": [
+          {
+            "type": "missing",
+            "loc": [
+              "body",
+              "baseline",
+              "dimensions"
+            ],
+            "msg": "Field required",
+            "input": {
+              "score_out_of_100": 100
+            }
+          },
+          {
+            "type": "extra_forbidden",
+            "loc": [
+              "body",
+              "baseline",
+              "score_out_of_100"
+            ],
+            "msg": "Extra inputs are not permitted",
+            "input": 100
+          }
+        ]
+      }
+    }
+  ],
+  "served_static_sha256": {
+    "/assets/app.js": {
+      "expected_source_sha256": "e96adf76e300266b993f42717acd2d0439a9d3e1d2d6db0249ee622ffeb2bb76",
+      "actual_http_sha256": "e96adf76e300266b993f42717acd2d0439a9d3e1d2d6db0249ee622ffeb2bb76",
+      "status": 200,
+      "matches": true
+    },
+    "/assets/common.js": {
+      "expected_source_sha256": "bc8a81c7a22dae89c0b9bc988414cf50fcc07043768ad6e0fa3f7757610a480e",
+      "actual_http_sha256": "bc8a81c7a22dae89c0b9bc988414cf50fcc07043768ad6e0fa3f7757610a480e",
+      "status": 200,
+      "matches": true
+    },
+    "/guide": {
+      "expected_source_sha256": "eafc3490ea4409add28357d67bea4defbd0028da5a76b7bde3fdc9b2850f64f2",
+      "actual_http_sha256": "eafc3490ea4409add28357d67bea4defbd0028da5a76b7bde3fdc9b2850f64f2",
+      "status": 200,
+      "matches": true
+    },
+    "/": {
+      "expected_source_sha256": "f54f474df40e27e9d33522bc343f15e268b5b274a9c79987321497db188cde26",
+      "actual_http_sha256": "f54f474df40e27e9d33522bc343f15e268b5b274a9c79987321497db188cde26",
+      "status": 200,
+      "matches": true
+    },
+    "/assets/styles.css": {
+      "expected_source_sha256": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+      "actual_http_sha256": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+      "status": 200,
+      "matches": true
+    }
+  },
+  "passed": true,
+  "limitations": [
+    "Served static/guide bytes matched reviewed source files; this alone does not prove Python image provenance.",
+    "HTTP assertions check deterministic synthetic examples, not real-world external validity.",
+    "This review used actual HTTP; visual browser acceptance and CI/release verification remain separate."
+  ]
+}

@@ -1,0 +1,6 @@
+ Container venture-lab-preview-ai-readiness-auditor-1  Creating
+ Container venture-lab-preview-ai-readiness-auditor-1  Created
+ Container venture-lab-preview-ai-readiness-auditor-1  Starting
+ Container venture-lab-preview-ai-readiness-auditor-1  Started
+ Container venture-lab-preview-ai-readiness-auditor-1  Waiting
+ Container venture-lab-preview-ai-readiness-auditor-1  Healthy

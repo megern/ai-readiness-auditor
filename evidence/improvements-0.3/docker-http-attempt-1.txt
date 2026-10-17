@@ -1,0 +1,119 @@
+{
+  "synthetic": true,
+  "http_status": 200,
+  "invalid_input_status": 422,
+  "latency_ms": [
+    2.655459102243185,
+    2.7336671482771635,
+    1.8974579870700836
+  ],
+  "result": {
+    "score_out_of_100": 63.0,
+    "band": "developing",
+    "dimensions": [
+      {
+        "dimension": "strategy",
+        "weight": 0.2,
+        "reported_score": 4.0,
+        "evidence_present": true,
+        "effective_score": 4.0,
+        "contribution": 16.0,
+        "priority": 0.2,
+        "action": "Define measurable use cases and accountable owners."
+      },
+      {
+        "dimension": "data",
+        "weight": 0.25,
+        "reported_score": 3.0,
+        "evidence_present": true,
+        "effective_score": 3.0,
+        "contribution": 15.0,
+        "priority": 0.5,
+        "action": "Inventory data and establish quality and access controls."
+      },
+      {
+        "dimension": "governance",
+        "weight": 0.2,
+        "reported_score": 2.0,
+        "evidence_present": true,
+        "effective_score": 2.0,
+        "contribution": 8.0,
+        "priority": 0.6,
+        "action": "Document risk review, privacy controls and model approval."
+      },
+      {
+        "dimension": "people",
+        "weight": 0.15,
+        "reported_score": 4.0,
+        "evidence_present": true,
+        "effective_score": 4.0,
+        "contribution": 12.0,
+        "priority": 0.15,
+        "action": "Assign delivery roles and train practitioners."
+      },
+      {
+        "dimension": "infrastructure",
+        "weight": 0.2,
+        "reported_score": 3.0,
+        "evidence_present": true,
+        "effective_score": 3.0,
+        "contribution": 12.0,
+        "priority": 0.4,
+        "action": "Establish reproducible deployment and monitoring."
+      }
+    ],
+    "prioritized_actions": [
+      {
+        "dimension": "governance",
+        "weight": 0.2,
+        "reported_score": 2.0,
+        "evidence_present": true,
+        "effective_score": 2.0,
+        "contribution": 8.0,
+        "priority": 0.6,
+        "action": "Document risk review, privacy controls and model approval."
+      },
+      {
+        "dimension": "data",
+        "weight": 0.25,
+        "reported_score": 3.0,
+        "evidence_present": true,
+        "effective_score": 3.0,
+        "contribution": 15.0,
+        "priority": 0.5,
+        "action": "Inventory data and establish quality and access controls."
+      },
+      {
+        "dimension": "infrastructure",
+        "weight": 0.2,
+        "reported_score": 3.0,
+        "evidence_present": true,
+        "effective_score": 3.0,
+        "contribution": 12.0,
+        "priority": 0.4,
+        "action": "Establish reproducible deployment and monitoring."
+      },
+      {
+        "dimension": "strategy",
+        "weight": 0.2,
+        "reported_score": 4.0,
+        "evidence_present": true,
+        "effective_score": 4.0,
+        "contribution": 16.0,
+        "priority": 0.2,
+        "action": "Define measurable use cases and accountable owners."
+      },
+      {
+        "dimension": "people",
+        "weight": 0.15,
+        "reported_score": 4.0,
+        "evidence_present": true,
+        "effective_score": 4.0,
+        "contribution": 12.0,
+        "priority": 0.15,
+        "action": "Assign delivery roles and train practitioners."
+      }
+    ],
+    "method": "Weighted score / 5; missing evidence caps dimension at 1. Evidence presence is not independently verified."
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "baseline": {
+    "dimensions": {
+      "strategy": {
+        "score": 5,
+        "evidence": []
+      },
+      "data": {
+        "score": 5,
+        "evidence": []
+      },
+      "governance": {
+        "score": 5,
+        "evidence": []
+      },
+      "people": {
+        "score": 5,
+        "evidence": []
+      },
+      "infrastructure": {
+        "score": 5,
+        "evidence": []
+      }
+    }
+  },
+  "current": {
+    "dimensions": {
+      "strategy": {
+        "score": 5,
+        "evidence": []
+      },
+      "data": {
+        "score": 5,
+        "evidence": [
+          "Synthetic quality checks"
+        ]
+      },
+      "governance": {
+        "score": 5,
+        "evidence": []
+      },
+      "people": {
+        "score": 5,
+        "evidence": []
+      },
+      "infrastructure": {
+        "score": 5,
+        "evidence": []
+      }
+    }
+  }
+}

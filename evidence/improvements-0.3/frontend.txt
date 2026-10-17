@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: CSV export neutralizes formula-like text without changing numeric negatives
+ok 1 - CSV export neutralizes formula-like text without changing numeric negatives
+  ---
+  duration_ms: 1.599417
+  type: 'test'
+  ...
+# Subtest: builder only accepts supported declarative operations
+ok 2 - builder only accepts supported declarative operations
+  ---
+  duration_ms: 1.288292
+  type: 'test'
+  ...
+# Subtest: validation errors show the input location and useful message
+ok 3 - validation errors show the input location and useful message
+  ---
+  duration_ms: 0.087584
+  type: 'test'
+  ...
+# Subtest: a delayed result is rejected after input generation changes
+ok 4 - a delayed result is rejected after input generation changes
+  ---
+  duration_ms: 0.20425
+  type: 'test'
+  ...
+# Subtest: pending work locks controls and restores them after failure without stale exports
+ok 5 - pending work locks controls and restores them after failure without stale exports
+  ---
+  duration_ms: 0.431917
+  type: 'test'
+  ...
+# Subtest: non-200 API response becomes a validation failure
+ok 6 - non-200 API response becomes a validation failure
+  ---
+  duration_ms: 0.86425
+  type: 'test'
+  ...
+# Subtest: actual configuration-import handler cannot overwrite edits after delayed file read
+ok 7 - actual configuration-import handler cannot overwrite edits after delayed file read
+  ---
+  duration_ms: 1.146167
+  type: 'test'
+  ...
+# Subtest: baseline input extraction ignores tampered report totals and supports old exports
+ok 8 - baseline input extraction ignores tampered report totals and supports old exports
+  ---
+  duration_ms: 0.307417
+  type: 'test'
+  ...
+# Subtest: actual delayed baseline-file handler cannot replace newer input or baseline status
+ok 9 - actual delayed baseline-file handler cannot replace newer input or baseline status
+  ---
+  duration_ms: 1.374625
+  type: 'test'
+  ...
+# Subtest: current baseline import is retained in exported comparison configuration
+ok 10 - current baseline import is retained in exported comparison configuration
+  ---
+  duration_ms: 1.327333
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 99.89575
