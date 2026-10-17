@@ -1,0 +1,44 @@
+{
+  "reviewer": "build_security_rag_arena_data independent agent; not this application production-code author",
+  "version": "0.3.0",
+  "status": "TESTED",
+  "scope": "Source/method/guide inspection, independently authored regressions, full pytest/frontend reruns and actual HTTP runtime assertions against orchestrator-provided Docker previews. Served static assets and guide bytes matched exact reviewed source hashes. No visual browser or release claim.",
+  "findings": "Fixed weights, evidence caps, signed deltas and trimmed evidence-set changes match independently constructed expected scores. Guides correctly reject certification and causal interpretation.",
+  "issues": [
+    "Evidence presence is self-reported and does not verify a control.",
+    "Visual browser acceptance, image provenance/security and CI/release verification are separate orchestrator gates. Synthetic examples do not establish external validity."
+  ],
+  "confidence": "High in checked deterministic arithmetic and validation; moderate in broader use-case validity.",
+  "full_suite_exit_code": 0,
+  "evidence": [
+    "independent-tests.txt",
+    "independent-full-suite.txt",
+    "independent-frontend.txt",
+    "independent-runtime.json"
+  ],
+  "source_sha256": {
+    "app/USER_GUIDE.md": "53b464d4fbbfe800091b9c4c46f2ff7985d0c8321985ee4871b95a0b60bd2e57",
+    "app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "app/core.py": "9df519ee8aa9fc1b848e5f259a4ae693e8ea469a873930b14a0e591af943dade",
+    "app/guard.py": "d1eda2150e58503114c6cf4ba36d5958aa7e2cfbb496fc0d8026b5c9da4beb77",
+    "app/main.py": "0106ca62b2a1808d9837dac4cbe437daaf3ed1a3376d8e3bef0a72b52ea564f3",
+    "app/static/app.js": "e96adf76e300266b993f42717acd2d0439a9d3e1d2d6db0249ee622ffeb2bb76",
+    "app/static/common.js": "bc8a81c7a22dae89c0b9bc988414cf50fcc07043768ad6e0fa3f7757610a480e",
+    "app/static/guide.html": "eafc3490ea4409add28357d67bea4defbd0028da5a76b7bde3fdc9b2850f64f2",
+    "app/static/index.html": "f54f474df40e27e9d33522bc343f15e268b5b274a9c79987321497db188cde26",
+    "app/static/styles.css": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+    "docs/USER_GUIDE.md": "53b464d4fbbfe800091b9c4c46f2ff7985d0c8321985ee4871b95a0b60bd2e57"
+  },
+  "frontend_exit_code": 0,
+  "source_hash_scope": "All files beneath app/ and docs/, excluding bytecode caches.",
+  "independent_test_sha256": "bd52293363093aa781e7b764776a5281558168e8d6989f28b8449f2aa0f03a74",
+  "source_unchanged_at_runtime_check": true,
+  "runtime_status": "TESTED",
+  "runtime": {
+    "actual_http_checks_passed": true,
+    "response_assertion_count": 3,
+    "served_asset_and_guide_hash_matches": 5,
+    "preview_port": 18202,
+    "evidence": "independent-runtime.json"
+  }
+}

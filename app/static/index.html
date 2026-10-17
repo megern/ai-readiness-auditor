@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <div class="eyebrow">AI READINESS AUDITOR · 0.2</div>
+      <div class="eyebrow">AI READINESS AUDITOR · 0.3</div>
       <h1>
         Turn an AI readiness conversation into an evidence-led action plan.
       </h1>
@@ -35,6 +35,21 @@
             evidence, one item per line. Evidence presence is self-reported and
             not independently verified.
           </p>
+          <fieldset>
+            <legend>Optional baseline comparison</legend>
+            <label for="baseline-file"
+              >Import a previous configuration or report</label
+            ><input
+              id="baseline-file"
+              type="file"
+              accept=".json,application/json"
+            />
+            <p id="baseline-status" class="hint">
+              No baseline loaded. Both assessments are recomputed using the same
+              fixed rubric.
+            </p>
+            <button id="clear-baseline">Clear baseline</button>
+          </fieldset>
           <div id="questions"></div>
           <div class="notice">
             Without nonblank evidence, a dimension is capped at 1/5. Do not

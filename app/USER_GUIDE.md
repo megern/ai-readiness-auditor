@@ -40,3 +40,13 @@ All bundled examples are synthetic and are labeled. Editing or importing your ow
 ## Local operation
 
 Run docker compose up --build and open http://127.0.0.1:8000. Alternatively install requirements-dev.lock with hashes in a Python 3.12 environment and run uvicorn app.main:app --host 127.0.0.1 --port 8000. Change the host port to run multiple tools. No GPU is needed.
+
+## Baseline comparisons in 0.3
+
+Use “Import a previous configuration or report” to load a baseline without replacing the current questionnaire. Files exported by 0.2 and 0.3 are supported when they contain the original five dimension inputs. Exported totals are ignored: both inputs are recomputed using the same fixed weights and evidence cap. The current questionnaire remains independently editable.
+
+Run analysis to see the baseline total, current total and signed delta, plus each dimension's effective score and weighted-point change. Evidence descriptions are trimmed and compared as sets. “Added” and “removed” refer to descriptions, not controls independently verified. Duplicate descriptions do not increase readiness. Replacing a description can show both an addition and removal while the score remains unchanged. Changes can be negative. These comparisons do not establish certification, regulatory compliance or a causal effect of an intervention.
+
+Export configuration preserves the optional baseline, and report exports include the comparison result. Clear baseline returns to a single assessment. Importing a baseline or current configuration marks the run as your input, and stale asynchronous file reads cannot replace newer selections.
+
+API: POST /compare with {"baseline": {"dimensions": ...}, "current": {"dimensions": ...}}. The response retains the current assessment fields and adds “comparison”. For a configuration containing a baseline, send its dimensions under “current” and its baseline under “baseline”; plain configurations without a baseline still map to /analyze. Prior report result scores are never accepted as an alternative to dimension inputs. The fixed rubric is unchanged.

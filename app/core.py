@@ -65,3 +65,53 @@ def analyze(request: Request) -> dict:
         ),
         "method": "Weighted score / 5; missing evidence caps dimension at 1. Evidence presence is not independently verified.",
     }
+
+
+class ComparisonRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    baseline: Request
+    current: Request
+
+
+def compare(request: ComparisonRequest) -> dict:
+    """Recompute both inputs against the fixed rubric; never trust exported totals."""
+    baseline = analyze(request.baseline)
+    current = analyze(request.current)
+    changes = []
+    for before, after in zip(baseline["dimensions"], current["dimensions"]):
+        name = after["dimension"]
+        old_evidence = {
+            e.strip() for e in request.baseline.dimensions[name].evidence if e.strip()
+        }
+        new_evidence = {
+            e.strip() for e in request.current.dimensions[name].evidence if e.strip()
+        }
+        changes.append(
+            {
+                "dimension": name,
+                "weight": after["weight"],
+                "baseline_reported_score": before["reported_score"],
+                "current_reported_score": after["reported_score"],
+                "baseline_effective_score": before["effective_score"],
+                "current_effective_score": after["effective_score"],
+                "baseline_contribution": before["contribution"],
+                "current_contribution": after["contribution"],
+                "weighted_score_delta": round(
+                    after["contribution"] - before["contribution"], 2
+                ),
+                "baseline_evidence_present": before["evidence_present"],
+                "current_evidence_present": after["evidence_present"],
+                "evidence_added": sorted(new_evidence - old_evidence),
+                "evidence_removed": sorted(old_evidence - new_evidence),
+            }
+        )
+    current["comparison"] = {
+        "baseline_score": baseline["score_out_of_100"],
+        "current_score": current["score_out_of_100"],
+        "total_delta": round(
+            current["score_out_of_100"] - baseline["score_out_of_100"], 2
+        ),
+        "dimensions": changes,
+        "method": "Both assessments are recomputed against the same fixed rubric. Evidence descriptions are trimmed and compared as sets; additions do not verify controls or establish certification.",
+    }
+    return current
