@@ -1,0 +1,49 @@
+{
+  "assessment": {
+    "dimensions": {
+      "strategy": {
+        "score": 1,
+        "evidence": []
+      },
+      "data": {
+        "score": 1,
+        "evidence": []
+      },
+      "governance": {
+        "score": 1,
+        "evidence": []
+      },
+      "people": {
+        "score": 1,
+        "evidence": []
+      },
+      "infrastructure": {
+        "score": 1,
+        "evidence": []
+      }
+    }
+  },
+  "effort_budget": 6,
+  "tasks": [
+    {
+      "id": "catalog",
+      "dimension": "data",
+      "target_score": 3,
+      "evidence_commitment": "Synthetic approved data catalog",
+      "effort": 4,
+      "owner": "Synthetic data lead",
+      "prerequisites": []
+    },
+    {
+      "id": "review",
+      "dimension": "governance",
+      "target_score": 3,
+      "evidence_commitment": "Synthetic risk review register",
+      "effort": 2,
+      "owner": "Synthetic risk lead",
+      "prerequisites": [
+        "catalog"
+      ]
+    }
+  ]
+}

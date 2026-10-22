@@ -1,0 +1,16 @@
+{
+  "container_id": "6de38ccaa6cbdebb14c77fd1abc3a833eaceb8afde682c9c87c0f019cb3700b1",
+  "container_image_id": "sha256:d0f5f34a247944873b0645c46fd10f8fe83f7598bb699c3872567e7a7ab34ef8",
+  "expected_image_id": "sha256:d0f5f34a247944873b0645c46fd10f8fe83f7598bb699c3872567e7a7ab34ef8",
+  "uid": "10001",
+  "read_only": true,
+  "cap_drop": [
+    "ALL"
+  ],
+  "security_options": [
+    "no-new-privileges:true"
+  ],
+  "health": "healthy",
+  "memory_bytes": 536870912,
+  "nano_cpus": 1000000000
+}

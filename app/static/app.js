@@ -17,6 +17,8 @@ import {
   setupExports,
   invalidate,
   readFile,
+  csvExport,
+  download,
 } from "./common.js";
 const dimensions = [
   [
@@ -63,6 +65,7 @@ const levels = [
   "4 · Measured and reviewed",
   "5 · Repeatedly improved",
 ];
+let planSynthetic = false;
 let synthetic = false,
   report = null,
   baseline = null;
@@ -113,6 +116,7 @@ function payload() {
   };
 }
 function dirty() {
+  planSynthetic = false;
   synthetic = false;
   report = null;
   $("data-origin").textContent = "Your input · changed";
@@ -317,3 +321,239 @@ $("run").onclick = () =>
     $("print").disabled = false;
   });
 setupExports("readiness", () => report, configuration);
+
+const planner = el("section", "", "panel");
+planner.id = "roadmap-planner";
+planner.append(
+  el("h2", "Scenario roadmap planner"),
+  el(
+    "p",
+    "Propose work, owners and evidence commitments. Projected scores assume delivery; this is a greedy scenario, not verification or ROI.",
+  ),
+);
+const budgetLabel = el("label", "Effort budget (use consistent units)"),
+  budgetInput = el("input");
+budgetInput.id = "plan-budget";
+budgetInput.type = "number";
+budgetInput.min = 0;
+budgetInput.max = 1000000;
+budgetInput.value = 10;
+budgetLabel.htmlFor = budgetInput.id;
+const taskRows = el("div"),
+  addTask = el("button", "Add proposed task"),
+  sampleTasks = el("button", "Load synthetic task scenario"),
+  runPlan = el("button", "Build roadmap");
+addTask.id = "plan-add";
+sampleTasks.id = "plan-example";
+runPlan.id = "plan-run";
+planner.append(
+  budgetLabel,
+  budgetInput,
+  taskRows,
+  addTask,
+  sampleTasks,
+  runPlan,
+);
+document.querySelector(".input-panel").append(planner);
+let proposed = [];
+function renderTasks() {
+  replace(taskRows);
+  proposed.forEach((task, index) => {
+    const row = el("fieldset");
+    row.append(el("legend", `Task ${index + 1}`));
+    for (const [key, label, type] of [
+      ["id", "Unique ID", "text"],
+      ["dimension", "Dimension", "select"],
+      ["target_score", "Target maturity / 5", "number"],
+      ["evidence_commitment", "Evidence to deliver", "text"],
+      ["effort", "Effort units", "number"],
+      ["owner", "Accountable owner", "text"],
+      ["prerequisites", "Prerequisite task IDs (comma-separated)", "text"],
+    ]) {
+      const l = el("label", label),
+        c = el(type === "select" ? "select" : "input");
+      c.id = `plan-${index}-${key}`;
+      l.htmlFor = c.id;
+      if (type === "select")
+        dimensions.forEach(([k]) => {
+          const o = el("option", k);
+          o.value = k;
+          c.append(o);
+        });
+      else c.type = type;
+      if (type === "number") {
+        c.min = key === "effort" ? 0.000001 : 0;
+        c.max = key === "effort" ? 1000000 : 5;
+        c.step = "any";
+      }
+      c.value = key === "prerequisites" ? task[key].join(", ") : task[key];
+      c.oninput = () => {
+        task[key] =
+          key === "prerequisites"
+            ? c.value
+                .split(",")
+                .map((v) => v.trim())
+                .filter(Boolean)
+            : type === "number"
+              ? Number(c.value)
+              : c.value;
+        dirty();
+      };
+      row.append(l, c);
+    }
+    const remove = el("button", "Remove task");
+    remove.onclick = () => {
+      proposed.splice(index, 1);
+      dirty();
+      renderTasks();
+    };
+    row.append(remove);
+    taskRows.append(row);
+  });
+}
+addTask.onclick = () => {
+  if (proposed.length >= 30) {
+    status("Maximum 30 proposed tasks.", true);
+    return;
+  }
+  proposed.push({
+    id: `task-${proposed.length + 1}`,
+    dimension: "data",
+    target_score: 3,
+    evidence_commitment: "",
+    effort: 1,
+    owner: "",
+    prerequisites: [],
+  });
+  dirty();
+  renderTasks();
+};
+sampleTasks.onclick = () => {
+  dirty();
+  proposed = [
+    {
+      id: "catalog",
+      dimension: "data",
+      target_score: 4,
+      evidence_commitment:
+        "Synthetic: approved catalog and data quality checks",
+      effort: 4,
+      owner: "Synthetic data lead",
+      prerequisites: [],
+    },
+    {
+      id: "review",
+      dimension: "governance",
+      target_score: 4,
+      evidence_commitment: "Synthetic: risk review log",
+      effort: 3,
+      owner: "Synthetic risk lead",
+      prerequisites: ["catalog"],
+    },
+    {
+      id: "training",
+      dimension: "people",
+      target_score: 4,
+      evidence_commitment: "Synthetic: assessed training",
+      effort: 2,
+      owner: "Synthetic team lead",
+      prerequisites: [],
+    },
+  ];
+  budgetInput.value = 7;
+  planSynthetic = true;
+  renderTasks();
+  status(
+    "Synthetic proposed tasks loaded. The questionnaire remains your current input; exported assessment provenance stays unchanged.",
+  );
+};
+budgetInput.oninput = dirty;
+runPlan.onclick = () =>
+  action(async () => {
+    report = null;
+    const input = {
+        assessment: payload(),
+        tasks: proposed.map((t) => ({
+          ...t,
+          prerequisites: [...t.prerequisites],
+        })),
+        effort_budget: Number(budgetInput.value),
+      },
+      generation = getRevision(),
+      result = await api("/plan", input);
+    assertCurrent(generation);
+    report = newReport(
+      "AI Readiness Auditor roadmap",
+      input,
+      result,
+      synthetic && planSynthetic,
+    );
+    replace(
+      $("results"),
+      metrics([
+        ["Baseline / 100", result.baseline_score],
+        ["Projected / 100", result.projected_score],
+        ["Weighted gain", result.score_delta],
+        ["Effort used", result.effort_used],
+      ]),
+      el("p", result.method, "notice"),
+      el("h3", "Selected tasks in execution order"),
+      table(
+        [
+          "Order",
+          "ID",
+          "Owner",
+          "Dimension",
+          "Before → target",
+          "Effort",
+          "Marginal points",
+          "Points / effort",
+        ],
+        result.selected.map((t) => [
+          t.selection_order,
+          t.id,
+          t.owner,
+          t.dimension,
+          `${t.effective_before} → ${t.effective_after}`,
+          t.effort,
+          t.marginal_weighted_gain,
+          t.gain_per_effort,
+        ]),
+      ),
+      el("h3", "Unscheduled work"),
+      table(
+        ["Task", "Reason", "Unselected prerequisites"],
+        result.unscheduled.map((t) => [
+          t.id,
+          t.reason,
+          t.unselected_prerequisites.join(", "),
+        ]),
+      ),
+    );
+    const save = el("button", "Export plan CSV"),
+      configuration = el("button", "Export scenario JSON");
+    save.onclick = () =>
+      download(
+        "readiness-roadmap.csv",
+        csvExport(
+          [
+            "selection_order",
+            "id",
+            "owner",
+            "dimension",
+            "target_score",
+            "evidence_commitment",
+            "effort",
+            "marginal_weighted_gain",
+            "gain_per_effort",
+          ],
+          result.selected,
+        ),
+        "text/csv",
+      );
+    configuration.onclick = () => download("readiness-scenario.json", input);
+    $("results").append(save, configuration);
+    $("technical").textContent = JSON.stringify(result, null, 2);
+    $("export-report").disabled = false;
+    $("print").disabled = false;
+  });

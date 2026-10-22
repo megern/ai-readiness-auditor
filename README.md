@@ -1,4 +1,4 @@
-# AI Readiness Auditor · 0.3.0
+# AI Readiness Auditor · 0.4.0
 
 **Evidence-led organizational assessment.** A structured workshop tool for consultants, delivery leads and internal AI teams. It converts five self-reported maturity ratings into an explicit weighted score and an ordered gap-closing conversation.
 
@@ -63,7 +63,7 @@ Synthetic example: maturity scores 4,3,2,4,3 with short synthetic evidence descr
 
 A high reported maturity with no evidence produces a low effective score. If import fails, check that all five dimensions exist, grades are integer 0–5, and evidence is a list of at most 20 strings. API clients may use fractional scores; the questionnaire UI uses discrete maturity levels.
 
-HTTP JSON requests are bounded at 2 MiB; CSV parsing is bounded at 50 columns/10000 rows. Requests are local CPU work, no outside actions. Authentication and HTTPS are required when deploying beyond a trusted localhost environment. See the user guide for detailed method/resource limitations. This release provides no authentication, durable history or multi-user access management.
+HTTP JSON requests are bounded at 2 MiB; CSV parsing is bounded at 50 columns/10000 rows. Requests are local CPU work, no outside actions. Authentication and HTTPS are required when deploying beyond a trusted localhost environment. See the user guide for detailed method/resource limitations. This release provides optional shared-key API access and per-process compute admission. It does not provide durable history or multi-user access management; see docs/OPERATIONS.md.
 
 ## License
 
@@ -82,3 +82,21 @@ API: POST /compare with {"baseline": {"dimensions": ...}, "current": {"dimension
 Fresh 0.3 validation is saved in `evidence/improvements-0.3/`; older reports describe earlier versions and are not proof of these additions. This is automated developer work with separate release-manager and independent QA gates; no human review or enterprise certification is claimed.
 
 The new synthetic request `examples/synthetic-improvements-03.json` demonstrates this version. POST it to `/compare`; all data are synthetic.
+
+## Scenario roadmap planner in 0.4
+
+Use the current questionnaire as the baseline, then scroll to Scenario roadmap planner. Set an effort budget in consistent units (for example person-days). Add up to 30 proposed tasks. Each task has a unique ID, one rubric dimension, a target score from 0–5, an explicit evidence commitment, a positive effort, an accountable owner and optional prerequisite task IDs. The synthetic task button supplies clearly labeled fictional work; it does not replace your questionnaire. Edit every field before applying it to a real organization.
+
+Build roadmap computes the baseline using the unchanged fixed rubric and missing-evidence cap. The scenario assumes that selected tasks deliver their stated evidence and target maturity. It never verifies that evidence or changes the original questionnaire. Projected maturity cannot decrease. Effective score gains are weighted by the fixed dimension weight: data moving from 1 to 3 adds (3−1)/5 × 25 = 10 points. Proposed targets are assumptions, not predictions of outcomes.
+
+At every selection, only tasks whose prerequisites are already selected and whose effort fits the remaining budget are eligible. The engine recomputes marginal weighted gain against current projected dimension state, divides by effort, then selects the greatest ratio; exact ties use ascending task ID. A zero-gain task can be selected to unlock a prerequisite chain or consume remaining budget. This transparent greedy heuristic is not a globally optimal knapsack or critical-path solver. Two tasks improving the same dimension do not double-count overlapping maturity gains. Missing references, repeated IDs/prerequisites and dependency cycles return actionable validation errors.
+
+The result shows baseline versus projected score, effort used/remaining, selected tasks in execution order with marginal gains, and unscheduled tasks labeled effort_budget or prerequisites_not_selected. Export plan CSV includes owners and evidence commitments, with formula-like text neutralized for spreadsheet import. Export scenario JSON retains the exact inputs; the full report includes results and creation time. Mixed user and synthetic inputs are conservatively marked as user input. No certification, evidence verification, ROI calculation, legal advice or real task execution is provided.
+
+API: POST /plan with assessment (the normal dimensions object), tasks, and effort_budget. See examples/synthetic-roadmap.json. At most 30 tasks; budget is 0–1,000,000 and each effort is 0.000001–1,000,000. Decimal budget arithmetic prevents a fractional task from overspending the remaining budget. An empty task list or zero budget is valid and leaves the score unchanged. Resolve every prerequisite ID before retrying a failed plan.
+
+Developer validation for 0.4 is saved in `evidence/improvements-0.4/`. Prior evidence describes prior versions. Local developer tests do not establish independent acceptance, hosted CI success or deployment readiness.
+
+## Server access and operating limits
+
+See [Operations](docs/OPERATIONS.md) for optional shared-key API access, per-process request admission, platform notes and the additional work needed for public multi-user hosting.
