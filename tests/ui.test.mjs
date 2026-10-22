@@ -164,6 +164,9 @@ function applicationDOM() {
       this.children = [];
       this.append(...items);
     }
+    before(...items) {
+      this.siblings = items;
+    }
     after(...items) {
       this.siblings = items;
     }
@@ -173,7 +176,14 @@ function applicationDOM() {
     }
     querySelectorAll(selector) {
       return this.children.flatMap((n) => [
-        ...(n.tagName === "input" && (selector !== "input:checked" || n.checked)
+        ...((
+          selector === "select"
+            ? n.tagName === "select"
+            : selector === "label"
+              ? n.tagName === "label"
+              : n.tagName === "input" &&
+                (selector !== "input:checked" || n.checked)
+        )
           ? [n]
           : []),
         ...n.querySelectorAll(selector),
@@ -191,6 +201,7 @@ function applicationDOM() {
     getElementById: get,
     createElement: (tag) => new Element(tag),
     querySelectorAll: () => [...nodes.values()],
+    querySelector: () => get("input-panel"),
   };
   return { nodes, get };
 }
@@ -397,4 +408,47 @@ test("current baseline import is retained in exported comparison configuration",
     URL.createObjectURL = original;
     URL.revokeObjectURL = revoke;
   }
+});
+
+test("actual roadmap editor submits explicit tasks, evidence commitments and budget", async () => {
+  const fixture = await realApplication();
+  fixture.get("plan-example").onclick();
+  fixture.get("plan-0-owner").value = "<img src=x onerror=alert(1)>";
+  fixture.get("plan-0-owner").oninput();
+  fixture.get("plan-budget").value = "6";
+  fixture.get("plan-budget").oninput();
+  let submitted;
+  global.fetch = async (path, options) => {
+    submitted = { path, input: JSON.parse(options.body) };
+    return {
+      ok: true,
+      json: async () => ({
+        baseline_score: 0,
+        projected_score: 20,
+        score_delta: 20,
+        effort_used: 4,
+        method: "Synthetic mock response for frontend transport only",
+        selected: [],
+        unscheduled: [],
+      }),
+    };
+  };
+  await fixture.get("plan-run").onclick();
+  assert.equal(submitted.path, "/plan");
+  assert.equal(submitted.input.effort_budget, 6);
+  assert.equal(submitted.input.tasks[0].owner, "<img src=x onerror=alert(1)>");
+  assert.deepEqual(submitted.input.tasks[1].prerequisites, ["catalog"]);
+  assert.match(submitted.input.tasks[0].evidence_commitment, /Synthetic/);
+});
+test("delayed roadmap response cannot restore results after a budget edit", async () => {
+  const fixture = await realApplication();
+  let release;
+  global.fetch = () => new Promise((r) => (release = r));
+  const pending = fixture.get("plan-run").onclick();
+  fixture.get("plan-budget").value = "2";
+  fixture.get("plan-budget").oninput();
+  release({ ok: true, json: async () => ({}) });
+  await pending;
+  assert.equal(fixture.get("export-report").disabled, true);
+  assert.equal(fixture.get("plan-budget").value, "2");
 });

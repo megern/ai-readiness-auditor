@@ -3,12 +3,12 @@
   <meta charset="utf-8" /><meta
     name="viewport"
     content="width=device-width,initial-scale=1"
-  /><title>User guide 0.3</title
+  /><title>User guide 0.4</title
   ><link rel="stylesheet" href="/assets/styles.css" />
   <main>
     <a href="/">← Back to application</a>
     <article class="panel">
-      <h1>AI Readiness Auditor — User guide · 0.3</h1>
+      <h1>AI Readiness Auditor — User guide</h1>
       <h2>Intended use</h2>
       <p>
         A structured workshop tool for consultants, delivery leads and internal
@@ -141,7 +141,57 @@
         and its baseline under “baseline”; plain configurations without a
         baseline still map to /analyze. Prior report result scores are never
         accepted as an alternative to dimension inputs. The fixed rubric is
-        unchanged.<br />
+        unchanged.
+      </p>
+      <h2>Scenario roadmap planner in 0.4</h2>
+      <p>
+        Use the current questionnaire as the baseline, then scroll to Scenario
+        roadmap planner. Set an effort budget in consistent units (for example
+        person-days). Add up to 30 proposed tasks. Each task has a unique ID,
+        one rubric dimension, a target score from 0–5, an explicit evidence
+        commitment, a positive effort, an accountable owner and optional
+        prerequisite task IDs. The synthetic task button supplies clearly
+        labeled fictional work; it does not replace your questionnaire. Edit
+        every field before applying it to a real organization.
+      </p>
+      <p>
+        Build roadmap computes the baseline using the unchanged fixed rubric and
+        missing-evidence cap. The scenario assumes that selected tasks deliver
+        their stated evidence and target maturity. It never verifies that
+        evidence or changes the original questionnaire. Projected maturity
+        cannot decrease. Effective score gains are weighted by the fixed
+        dimension weight: data moving from 1 to 3 adds (3−1)/5 × 25 = 10 points.
+        Proposed targets are assumptions, not predictions of outcomes.
+      </p>
+      <p>
+        At every selection, only tasks whose prerequisites are already selected
+        and whose effort fits the remaining budget are eligible. The engine
+        recomputes marginal weighted gain against current projected dimension
+        state, divides by effort, then selects the greatest ratio; exact ties
+        use ascending task ID. A zero-gain task can be selected to unlock a
+        prerequisite chain or consume remaining budget. This transparent greedy
+        heuristic is not a globally optimal knapsack or critical-path solver.
+        Two tasks improving the same dimension do not double-count overlapping
+        maturity gains. Missing references, repeated IDs/prerequisites and
+        dependency cycles return actionable validation errors.
+      </p>
+      <p>
+        The result shows baseline versus projected score, effort used/remaining,
+        selected tasks in execution order with marginal gains, and unscheduled
+        tasks labeled effort_budget or prerequisites_not_selected. Export plan
+        CSV includes owners and evidence commitments, with formula-like text
+        neutralized for spreadsheet import. Export scenario JSON retains the
+        exact inputs; the full report includes results and creation time. Mixed
+        user and synthetic inputs are conservatively marked as user input. No
+        certification, evidence verification, ROI calculation, legal advice or
+        real task execution is provided.
+      </p>
+      <p>
+        API: POST /plan with assessment (the normal dimensions object), tasks,
+        and effort_budget. See examples/synthetic-roadmap.json. At most 30
+        tasks; budget is 0–1,000,000 and each effort is 0.000001–1,000,000. Decimal budget arithmetic prevents a fractional task from overspending the remaining budget. An empty task
+        list or zero budget is valid and leaves the score unchanged. Resolve
+        every prerequisite ID before retrying a failed plan.<br />
       </p>
     </article>
   </main>

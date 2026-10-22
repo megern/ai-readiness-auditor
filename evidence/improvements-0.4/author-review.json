@@ -1,0 +1,41 @@
+{
+  "python_tests": 34,
+  "frontend_tests": 12,
+  "routes": [
+    "POST /plan"
+  ],
+  "limits": [
+    "30 proposed tasks; task effort 0.000001\u20131000000, budget0\u20131000000",
+    "Dependency cycles/duplicates/unknown references rejected; Decimal budget arithmetic",
+    "Greedy marginal weighted gain/effort recomputed per selected task; projected scores assume evidence delivery, not verification"
+  ],
+  "example": "examples/synthetic-roadmap.json",
+  "application": "ai-readiness-auditor",
+  "version": "0.4.0",
+  "author": "build_enterprise automated application developer",
+  "independent_review": false,
+  "status": "TESTED",
+  "checked_at_utc": "2026-10-22T14:10:53.920127+00:00",
+  "scope": "Developer unit/API integration and frontend DOM-fixture transport/state tests before root shared access integration. Not browser rendering, Docker acceptance, hosted CI or a publication claim. Root integrates and tests shared access after this checkpoint.",
+  "test_commands": [
+    "work/.venv/bin/python -m pytest -q (repository cwd)",
+    "node --test tests/ui.test.mjs",
+    "work/.venv/bin/python -m bandit -r app -ll"
+  ],
+  "logs": [
+    "pytest.txt",
+    "frontend.txt",
+    "bandit.txt"
+  ],
+  "bandit": "PASS; configured static scan0 findings",
+  "feature_source_sha256": {
+    "app/planner.py": "81f292cf335f29de9171be8bf11bb038808cde390a7097ce9059bd3ff0d98c7f",
+    "app/core.py": "9df519ee8aa9fc1b848e5f259a4ae693e8ea469a873930b14a0e591af943dade",
+    "app/static/app.js": "2514a4cf6dfe47374c9e1fc965f0a1f56d16668fdcd58db671fa00110586757a",
+    "tests/test_improvements_04.py": "0ce8d82a75c5f0f6377f964324775805ffea8b3ebbb382fbe2e2dc0d1106fa70",
+    "tests/ui.test.mjs": "8eb0f5fd24f758aaec3bbf681e61a41307c6965f7e9b356c2f7538ff5fdfc9bb"
+  },
+  "synthetic_examples_only": true,
+  "shared_constraints": "No new dependencies, dynamic execution, external actions or paid services. Existing streamed2MiB guard, CSV empty records and asynchronous revision safeguards retained.",
+  "mutations": "No Git commits/pushes, Docker changes or root-owned access files edited."
+}

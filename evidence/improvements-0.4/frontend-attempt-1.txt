@@ -1,0 +1,130 @@
+TAP version 13
+# Subtest: CSV export neutralizes formula-like text without changing numeric negatives
+ok 1 - CSV export neutralizes formula-like text without changing numeric negatives
+  ---
+  duration_ms: 7.480083
+  type: 'test'
+  ...
+# Subtest: builder only accepts supported declarative operations
+ok 2 - builder only accepts supported declarative operations
+  ---
+  duration_ms: 14.674666
+  type: 'test'
+  ...
+# Subtest: validation errors show the input location and useful message
+ok 3 - validation errors show the input location and useful message
+  ---
+  duration_ms: 0.350625
+  type: 'test'
+  ...
+# Subtest: a delayed result is rejected after input generation changes
+ok 4 - a delayed result is rejected after input generation changes
+  ---
+  duration_ms: 0.916209
+  type: 'test'
+  ...
+# Subtest: pending work locks controls and restores them after failure without stale exports
+ok 5 - pending work locks controls and restores them after failure without stale exports
+  ---
+  duration_ms: 3.320125
+  type: 'test'
+  ...
+# Subtest: non-200 API response becomes a validation failure
+ok 6 - non-200 API response becomes a validation failure
+  ---
+  duration_ms: 2.319875
+  type: 'test'
+  ...
+# Subtest: actual configuration-import handler cannot overwrite edits after delayed file read
+ok 7 - actual configuration-import handler cannot overwrite edits after delayed file read
+  ---
+  duration_ms: 4.800542
+  type: 'test'
+  ...
+# Subtest: baseline input extraction ignores tampered report totals and supports old exports
+ok 8 - baseline input extraction ignores tampered report totals and supports old exports
+  ---
+  duration_ms: 1.164333
+  type: 'test'
+  ...
+# Subtest: actual delayed baseline-file handler cannot replace newer input or baseline status
+ok 9 - actual delayed baseline-file handler cannot replace newer input or baseline status
+  ---
+  duration_ms: 7.672084
+  type: 'test'
+  ...
+# Subtest: current baseline import is retained in exported comparison configuration
+ok 10 - current baseline import is retained in exported comparison configuration
+  ---
+  duration_ms: 10.030791
+  type: 'test'
+  ...
+# Subtest: actual roadmap editor submits explicit tasks, evidence commitments and budget
+ok 11 - actual roadmap editor submits explicit tasks, evidence commitments and budget
+  ---
+  duration_ms: 119.036709
+  type: 'test'
+  ...
+# Subtest: delayed roadmap response cannot restore results after a budget edit
+ok 12 - delayed roadmap response cannot restore results after a budget edit
+  ---
+  duration_ms: 1.967375
+  type: 'test'
+  ...
+# Subtest: Default page does not attach a credential or change request bodies
+ok 13 - Default page does not attach a credential or change request bodies
+  ---
+  duration_ms: 88.334916
+  type: 'test'
+  ...
+# Subtest: Actual key form affects same-origin requests only and clears its field
+ok 14 - Actual key form affects same-origin requests only and clears its field
+  ---
+  duration_ms: 4.438958
+  type: 'test'
+  ...
+# Subtest: Explicit authorization and Request headers are preserved
+ok 15 - Explicit authorization and Request headers are preserved
+  ---
+  duration_ms: 2.057208
+  type: 'test'
+  ...
+# Subtest: Clear and page reload remove the credential
+ok 16 - Clear and page reload remove the credential
+  ---
+  duration_ms: 2.307042
+  type: 'test'
+  ...
+# Subtest: Cross-constructor external Request must never receive the server access key
+ok 17 - Cross-constructor external Request must never receive the server access key
+  ---
+  duration_ms: 67.932125
+  type: 'test'
+  ...
+# Subtest: Protocol-relative external URL and suffix-lookalike origin never receive key
+ok 18 - Protocol-relative external URL and suffix-lookalike origin never receive key
+  ---
+  duration_ms: 1.68
+  type: 'test'
+  ...
+# Subtest: Own URL property on a genuine external Request cannot spoof its destination
+ok 19 - Own URL property on a genuine external Request cannot spoof its destination
+  ---
+  duration_ms: 1.640625
+  type: 'test'
+  ...
+# Subtest: Own href property on external URL and unknown objects cannot obtain implicit credential
+ok 20 - Own href property on external URL and unknown objects cannot obtain implicit credential
+  ---
+  duration_ms: 9.022166
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 20
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 432.433541

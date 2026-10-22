@@ -1,0 +1,428 @@
+{
+  "application": "ai-readiness-auditor",
+  "version": "0.4.0",
+  "checked_at_utc": "2026-10-22T17:54:22.879216+00:00",
+  "preview_url": "http://127.0.0.1:18402",
+  "reviewer": "independent AI agent build_security_rag_arena_data; not this application production-code author",
+  "checks": [
+    {
+      "name": "live health",
+      "path": "/health",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "reported current API version",
+      "path": "/openapi.json",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "actual Decimal budget and dependency-aware scenario",
+      "path": "/plan",
+      "status": 200,
+      "passed": true,
+      "synthetic_input": {
+        "assessment": {
+          "dimensions": {
+            "strategy": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "data": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "governance": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "people": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "infrastructure": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            }
+          }
+        },
+        "tasks": [
+          {
+            "id": "prerequisite",
+            "dimension": "strategy",
+            "target_score": 1,
+            "effort": 0.1,
+            "evidence_commitment": "synthetic proposed evidence",
+            "owner": "synthetic owner",
+            "prerequisites": []
+          },
+          {
+            "id": "upgrade",
+            "dimension": "data",
+            "target_score": 3,
+            "effort": 0.2,
+            "evidence_commitment": "synthetic proposed evidence",
+            "owner": "synthetic owner",
+            "prerequisites": [
+              "prerequisite"
+            ]
+          }
+        ],
+        "effort_budget": 0.3
+      },
+      "actual_response": {
+        "baseline_score": 20.0,
+        "projected_score": 30.0,
+        "score_delta": 10.0,
+        "effort_budget": 0.3,
+        "effort_used": 0.3,
+        "effort_remaining": 0.0,
+        "selected": [
+          {
+            "id": "prerequisite",
+            "dimension": "strategy",
+            "target_score": 1.0,
+            "evidence_commitment": "synthetic proposed evidence",
+            "effort": 0.1,
+            "owner": "synthetic owner",
+            "prerequisites": [],
+            "selection_order": 1,
+            "effective_before": 1.0,
+            "effective_after": 1.0,
+            "marginal_weighted_gain": 0.0,
+            "gain_per_effort": 0.0
+          },
+          {
+            "id": "upgrade",
+            "dimension": "data",
+            "target_score": 3.0,
+            "evidence_commitment": "synthetic proposed evidence",
+            "effort": 0.2,
+            "owner": "synthetic owner",
+            "prerequisites": [
+              "prerequisite"
+            ],
+            "selection_order": 2,
+            "effective_before": 1.0,
+            "effective_after": 3.0,
+            "marginal_weighted_gain": 10.0,
+            "gain_per_effort": 50.0
+          }
+        ],
+        "unscheduled": [],
+        "projected_dimensions": {
+          "strategy": 1.0,
+          "data": 3.0,
+          "governance": 1.0,
+          "people": 1.0,
+          "infrastructure": 1.0
+        },
+        "method": "Dependency-ready tasks ranked by current marginal weighted score gain / effort, ties by task ID. Gains recomputed after each selection. Zero-gain prerequisites can be selected. Greedy heuristic, not a globally optimal budget allocation. Proposed evidence is assumed delivered; no evidence verification, certification or ROI estimate."
+      },
+      "cache_control": "no-store"
+    },
+    {
+      "name": "unknown prerequisite rejected",
+      "path": "/plan",
+      "status": 422,
+      "passed": true,
+      "synthetic_input": {
+        "assessment": {
+          "dimensions": {
+            "strategy": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "data": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "governance": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "people": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            },
+            "infrastructure": {
+              "score": 1,
+              "evidence": [
+                "synthetic self report"
+              ]
+            }
+          }
+        },
+        "tasks": [
+          {
+            "id": "bad",
+            "dimension": "data",
+            "target_score": 3,
+            "effort": 0.2,
+            "evidence_commitment": "synthetic proposed evidence",
+            "owner": "synthetic owner",
+            "prerequisites": [
+              "unknown"
+            ]
+          }
+        ],
+        "effort_budget": 0.3
+      },
+      "actual_response": {
+        "detail": "Unknown prerequisite"
+      },
+      "cache_control": "no-store"
+    }
+  ],
+  "served_files": [
+    {
+      "sha256": "f7a4a09a26b83052edc956cf886195c0f4687b0661a166320f460f3e3ccad0d5",
+      "path": "/assets/access.js",
+      "local_source_path": "app/static/access.js",
+      "expected_sha256": "f7a4a09a26b83052edc956cf886195c0f4687b0661a166320f460f3e3ccad0d5",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "sha256": "2514a4cf6dfe47374c9e1fc965f0a1f56d16668fdcd58db671fa00110586757a",
+      "path": "/assets/app.js",
+      "local_source_path": "app/static/app.js",
+      "expected_sha256": "2514a4cf6dfe47374c9e1fc965f0a1f56d16668fdcd58db671fa00110586757a",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "sha256": "f39c2ae88ba4de446da3c3410bb55128e8b7461030dfb238e42c90ddfd74b0c0",
+      "path": "/assets/common.js",
+      "local_source_path": "app/static/common.js",
+      "expected_sha256": "f39c2ae88ba4de446da3c3410bb55128e8b7461030dfb238e42c90ddfd74b0c0",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "sha256": "caf449f46c0acb199327ea632a8736aab29b67358eae98ff15db0c5bd81cfe5a",
+      "path": "/guide",
+      "local_source_path": "app/static/guide.html",
+      "expected_sha256": "caf449f46c0acb199327ea632a8736aab29b67358eae98ff15db0c5bd81cfe5a",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "sha256": "c331136b8fa56937a9a28597493028322c9e5e47630fedc487654258b201b501",
+      "path": "/",
+      "local_source_path": "app/static/index.html",
+      "expected_sha256": "c331136b8fa56937a9a28597493028322c9e5e47630fedc487654258b201b501",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "sha256": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+      "path": "/assets/styles.css",
+      "local_source_path": "app/static/styles.css",
+      "expected_sha256": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+      "status": 200,
+      "matches": true
+    }
+  ],
+  "source_hashes": [
+    {
+      "sha256": "835304470dc0cd12354ec1cdc75665a9171ac4bef20478d3c623767c3e589832",
+      "path": ".github/workflows/ci.yml"
+    },
+    {
+      "sha256": "88f17372fdd7608502821783b4b09ce6964e4e746fd1635e98ccadfe71ed5adb",
+      "path": "Dockerfile"
+    },
+    {
+      "sha256": "710dc4d69d182a44662bdea6752bff751c18c7e406bf6275c1db310df7d7d2fa",
+      "path": "README.md"
+    },
+    {
+      "sha256": "2913b95d52809e3d26473251345ffedff6283bfccfd69ba60cdd7ece802e1f40",
+      "path": "app/USER_GUIDE.md"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "path": "app/__init__.py"
+    },
+    {
+      "sha256": "bc340ac2d8658f547b2a58012834d302482fea40a8773ba0363b4a1b2edf251c",
+      "path": "app/access.py"
+    },
+    {
+      "sha256": "9df519ee8aa9fc1b848e5f259a4ae693e8ea469a873930b14a0e591af943dade",
+      "path": "app/core.py"
+    },
+    {
+      "sha256": "d1eda2150e58503114c6cf4ba36d5958aa7e2cfbb496fc0d8026b5c9da4beb77",
+      "path": "app/guard.py"
+    },
+    {
+      "sha256": "e0103a2c635bf881d54404263885dd7bd664ef29a39900e76ed05239396ee156",
+      "path": "app/main.py"
+    },
+    {
+      "sha256": "81f292cf335f29de9171be8bf11bb038808cde390a7097ce9059bd3ff0d98c7f",
+      "path": "app/planner.py"
+    },
+    {
+      "sha256": "f7a4a09a26b83052edc956cf886195c0f4687b0661a166320f460f3e3ccad0d5",
+      "path": "app/static/access.js"
+    },
+    {
+      "sha256": "2514a4cf6dfe47374c9e1fc965f0a1f56d16668fdcd58db671fa00110586757a",
+      "path": "app/static/app.js"
+    },
+    {
+      "sha256": "f39c2ae88ba4de446da3c3410bb55128e8b7461030dfb238e42c90ddfd74b0c0",
+      "path": "app/static/common.js"
+    },
+    {
+      "sha256": "caf449f46c0acb199327ea632a8736aab29b67358eae98ff15db0c5bd81cfe5a",
+      "path": "app/static/guide.html"
+    },
+    {
+      "sha256": "c331136b8fa56937a9a28597493028322c9e5e47630fedc487654258b201b501",
+      "path": "app/static/index.html"
+    },
+    {
+      "sha256": "14e48894070883d8545452d3e2b9bcefe3b8316e22048fc10b5b334e3cb137ad",
+      "path": "app/static/styles.css"
+    },
+    {
+      "sha256": "12fe193035704ca340103731c0e2a572835baa061bb982ea65667d4806979993",
+      "path": "compose.yaml"
+    },
+    {
+      "sha256": "e3d7a27dcd6b869601c33afc9532b9ea02c14387b8ff735cbdc4144c75544ddb",
+      "path": "docs/OPERATIONS.md"
+    },
+    {
+      "sha256": "2913b95d52809e3d26473251345ffedff6283bfccfd69ba60cdd7ece802e1f40",
+      "path": "docs/USER_GUIDE.md"
+    },
+    {
+      "sha256": "59de53953ac6a800b0f8600f5bad4e7fe494f4f4e7541e67d7e3577bc9c6d783",
+      "path": "pyproject.toml"
+    },
+    {
+      "sha256": "3e9fb16204447836fb946dd77126b42b5c249acbee4a1dd44779ba21ab2af810",
+      "path": "requirements-dev.in"
+    },
+    {
+      "sha256": "3e7a32b7867e55654924462dfebf5df34e85306a7bb739bf0aef01cee00913cc",
+      "path": "requirements-dev.lock"
+    },
+    {
+      "sha256": "cc2d915f3530f2b16ab605d633b94e6c8784ee70f799daf639dd30deef2361de",
+      "path": "requirements-dev.txt"
+    },
+    {
+      "sha256": "da44951925ae485ff2ba743af929b11e7b0bac5b631084de18e1324b723d6f4d",
+      "path": "requirements.lock"
+    },
+    {
+      "sha256": "bd62df965af87f46d7903a4c86d2e43d7622bbcb6145a04466e29dc6c0e0c22b",
+      "path": "requirements.txt"
+    },
+    {
+      "sha256": "d8f870bb86183aab1edff1987308c53f2e912daf5760189a681bd81a52db2ee5",
+      "path": "tests/test_access.py"
+    },
+    {
+      "sha256": "0c3489dda78f899f6e12bd9eaa05359c7d284b1ec90cde3a302d56f74c783cb0",
+      "path": "tests/test_access_independent.py"
+    },
+    {
+      "sha256": "8988c1a4ea4e3d758e013a6ccc1ea8c073db7cd67eab4226b25a2d077e58d614",
+      "path": "tests/test_app.py"
+    },
+    {
+      "sha256": "a04ed2b026c6639d759a101b465c545761761ae29b9b43a44241f93c7367a06e",
+      "path": "tests/test_improvements_03.py"
+    },
+    {
+      "sha256": "0ce8d82a75c5f0f6377f964324775805ffea8b3ebbb382fbe2e2dc0d1106fa70",
+      "path": "tests/test_improvements_04.py"
+    },
+    {
+      "sha256": "e40734278b0f3af7d626aa40d732071b7fce2baf63705a0bae0852c9b8ffa66a",
+      "path": "tests/test_independent04.py"
+    },
+    {
+      "sha256": "bd52293363093aa781e7b764776a5281558168e8d6989f28b8449f2aa0f03a74",
+      "path": "tests/test_independent_security_science_03.py"
+    },
+    {
+      "sha256": "709e55e68eccbe12bbbdbdc502274dc0f884d588c4f1428d4afd102686a63bc5",
+      "path": "tests/test_input_limits.py"
+    },
+    {
+      "sha256": "d424afbcee57c0131b73053b329abf3895a19695a982ad04507573db2edc74af",
+      "path": "tests/test_rebuild.py"
+    },
+    {
+      "sha256": "09dfafd553586be91857fd7a834107a42a47d6eef0cfdf7111be83758dbfb10c",
+      "path": "tests/test_review.py"
+    },
+    {
+      "sha256": "8eb0f5fd24f758aaec3bbf681e61a41307c6965f7e9b356c2f7538ff5fdfc9bb",
+      "path": "tests/ui.test.mjs"
+    },
+    {
+      "sha256": "94ca23ae81eaef6f0a3eddcb5dbae0970c22bfe14e91c625d5d10a83edcd5b9f",
+      "path": "tools/scan_secrets.py"
+    },
+    {
+      "sha256": "ecedd0d5c9208a193cea960d43f084b49acd0a0dcd20e709cb2c755675769fd3",
+      "path": "tools/smoke.py"
+    },
+    {
+      "sha256": "26a68d9b7b2b26c741e9f00ede37131c7f25eef474b988bdb8e6b1218d2021d9",
+      "path": "tools/test_access.mjs"
+    },
+    {
+      "sha256": "a011463941834d70d767df7204201aff25a59172bd6955be548cd34c7ae93307",
+      "path": "tools/test_access_independent.mjs"
+    }
+  ],
+  "access_mode": "local",
+  "reported_api_version": "0.4.0",
+  "completed_at_utc": "2026-10-22T17:54:23.024306+00:00",
+  "source_stable_during_runtime": true,
+  "served_bytes_match_current_source": true,
+  "passed": true,
+  "status": "TESTED",
+  "limits": [
+    "Actual loopback HTTP and served-file byte comparisons, not visual browser acceptance.",
+    "All payloads are explicitly synthetic known-value/adversarial fixtures; external scientific/business validity is not established.",
+    "No app, Git, Docker or access key was changed by this reviewer.",
+    "Backend image byte proof is supplied by the root reviewer; this reviewer independently checked its complete app-tree coverage and every recorded hash against current source, without rerunning Docker exec."
+  ],
+  "root_backend_source_proof": {
+    "sha256": "e5392418dda519a74650eb84e06dd5fca9114b5cfb7b5ed4a8f1b719ba91d3b8",
+    "path": "outputs/evidence/improvements-0.4/runtime-source.json",
+    "container": "6de38ccaa6cbdebb14c77fd1abc3a833eaceb8afde682c9c87c0f019cb3700b1",
+    "complete_app_tree_matches": true,
+    "file_count": 13
+  }
+}

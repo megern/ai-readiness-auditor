@@ -1,3 +1,4 @@
+from .access import AccessControl
 from pathlib import Path
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
@@ -5,7 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from .core import Request, analyze, ComparisonRequest, compare
 from .guard import InputGuard
 
-app = FastAPI(title="AI Readiness Auditor", version="0.3.0")
+app = FastAPI(title="AI Readiness Auditor", version="0.4.0")
 app.add_middleware(InputGuard)
 STATIC = Path(__file__).with_name("static")
 app.mount("/assets", StaticFiles(directory=STATIC), name="assets")
@@ -40,3 +41,17 @@ def compare_assessments(request: ComparisonRequest):
         return compare(request)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+from .planner import PlanRequest, plan
+
+
+@app.post("/plan")
+def create_plan(request: PlanRequest):
+    try:
+        return plan(request)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+
+
+app.add_middleware(AccessControl)
